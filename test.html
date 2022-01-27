@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
+		<script src="./assets/js/interactions.js" defer></script>
+		<script src="./assets/js/sunAPI.js" defer></script>
+
+		<style>
+            * {
+                margin: 0;
+
+            }
+			.circle {
+				height: 499px;
+				width: 499px;
+				border: solid 1px black;
+				border-radius: 50%;
+                margin: 200px;
+			}
+
+		</style>
+	</head>
+
+	<body>
+		<div class="circle"></div>
+
+        <script defer>
+            const circleOrigin = {x: 450, y: 450};
+            const radius = 250;
+            const xcircleStart = circleOrigin.x - radius
+            const ycircleStart = circleOrigin.y - radius
+
+			document.querySelector(".circle").addEventListener("click", (event) =>
+			{
+                longitude = Math.asin((event.x - xcircleStart) / radius - 1) / Math.PI * 180;
+                latitude = Math.asin(- ((event.y - ycircleStart) / radius - 1)) / Math.PI * 180;
+				console.log({x: event.x, y: event.y, lng: longitude, lat: latitude});
+				loadDoc(latitude, longitude);
+			});
+
+			document.body.addEventListener
+
+            // Faire attention aux bordures (explications: j'ai réussi à avoir 501 px pour le event.x/y soit asin(n) avec n > 1 => NaN), fix possible: -1 px sur chaque dimension (500px => 499px)
+
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Sunset</title>
+		<link rel="stylesheet" href="./assets/css/earth.css">
+		<!-- Date de début: 21/01/2022 -->
+		<script type="text/javascript"
+			src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.js"
+			defer>
+		</script>
+		<script src="./assets/js/sunAPI.js" defer></script>
+		<script src="./assets/js/earth.js" defer></script>
+		<script src="./assets/js/interactions.js" defer></script>
+	</head>
+
+	<body>
+		<div class="rendering"></div>
+		<div class="details">
+			<div class="info">Description</div>
+			<div class="buttons">
+				<button onclick="toggleEarthRotation()">Rotate Earth</button>
+				<button onclick="toggleCloudsRotation()">Rotate Clouds</button>
+				<button onclick="resetCamera()">Reset Camera</button>
+			</div>
+		</div>
+	</body>
+
+</html>

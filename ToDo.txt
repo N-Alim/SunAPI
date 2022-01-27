@@ -1,0 +1,55 @@
+Bien penser à virer le code qui ne sert à rien, notamment les tests, et refaire des noms de variables dans les js, css et html:
+-earth.js
+-earth.css
+-sunAPI.js
+-index.html
+
+Renommer des variables:
+-earth.js
+
+Tester l'API sunrise avec les valeurs pour comprendre comment les coordonnées sont gérées
+
+Zoom/dézoom avec le scroll et une barre sur le côté (faire attention à fixer des valeurs min et max)
+
+Zoom/dézoom avec le clic bouton du milieu et drag vers le hat/bas (vitesse proportionnelle à la distance du point de base)
+
+Calculer la longitude et la latitude à partir d'un clic sur la Terre
+
+Prendre en compte la rotation de la Terre en x/y avec le drag pour la longitude et la latitude
+
+Lier l'appel de sunrise API avec le clic sur la Terre
+
+Arranger les textures de la Terre et des nuages (avec canvas et les 2 maps)
+
+Faire une lune qui orbite autour de la Terre
+
+Faire un soleil
+
+Faire la map de nuit dans le cas où le soleil n'éclaire pas
+
+Pouvoir voir et changer les vitesses des nuages et de la Terre (explications soit nb tours/s soit un tour en X s)
+
+Faire du responsive
+
+Séparer les fichiers js et css proprement
+
+Faire des animations/différences de CSS pour les boutons (toggled, being clicked)
+
+///////////////////////////////
+
+Faire des liaisons en SSH pour vscode et sublime text
+
+
+Fait:
+
+Faire un drag pour déplacer la caméra
+
+Faire des boutons stop earthRotation, cloudRotation, resetCamera
+
+Afficher une zone dédié aux données sur la droite
+
+
+Message pour Ludo (pas nécessaire pour le moment): 
+Bonjour, suite au cours de dossier de vendredi, j'ai commencé un projet utilisant three.js. Pour résumer, j'ai modélisé une planète Terre 
+(grâce à un tuto et du bidouillage) et utilise une API nécessitant la longitude et la latitude en paramètres. Ce que je souhaite faire, 
+est de pouvoir cliquer sur la planète Terre pour générer une paire de coordonnées longitude/latitude et de pouvoir aussi tourner la Terre
