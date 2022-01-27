@@ -13,11 +13,7 @@ Zoom/dézoom avec le scroll et une barre sur le côté (faire attention à fixer
 
 Zoom/dézoom avec le clic bouton du milieu et drag vers le hat/bas (vitesse proportionnelle à la distance du point de base)
 
-Calculer la longitude et la latitude à partir d'un clic sur la Terre
-
 Prendre en compte la rotation de la Terre en x/y avec le drag pour la longitude et la latitude
-
-Lier l'appel de sunrise API avec le clic sur la Terre
 
 Arranger les textures de la Terre et des nuages (avec canvas et les 2 maps)
 
@@ -42,12 +38,15 @@ Faire des liaisons en SSH pour vscode et sublime text
 
 Fait:
 
+Calculer la longitude et la latitude à partir d'un clic sur la Terre
+
 Faire un drag pour déplacer la caméra
 
 Faire des boutons stop earthRotation, cloudRotation, resetCamera
 
 Afficher une zone dédié aux données sur la droite
 
+Lier l'appel de sunrise API avec le clic sur la Terre
 
 Message pour Ludo (pas nécessaire pour le moment): 
 Bonjour, suite au cours de dossier de vendredi, j'ai commencé un projet utilisant three.js. Pour résumer, j'ai modélisé une planète Terre 
