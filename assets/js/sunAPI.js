@@ -16,8 +16,7 @@ function loadData(latitude, longitude)
 		if (this.status == 200)
 		{
 			data = JSON.parse(this.responseText).results;
-			createDataCard(data);
-			console.log(data);
+			updateDataCard(data);
 		}
 		else
 		{
@@ -30,11 +29,10 @@ function loadData(latitude, longitude)
 	xhttp.send();
 }
 
-function createDataCard(data)
+function updateDataCard(data)
 {
-	const card = document.createElement("div");
-	card.className = "dataCard";
-
+	const card = document.querySelector(".dataCard");
+	card.innerText = "";
 
 	for (const property in data) 
 	{
@@ -42,8 +40,6 @@ function createDataCard(data)
 		textZone.innerText = `${property}: ${data[property]}`;
 		card.appendChild(textZone);
 	}
-
-	document.querySelector(".info").appendChild(card);
 }
 
 // loadDoc(36.7201600, -4.4203400)
