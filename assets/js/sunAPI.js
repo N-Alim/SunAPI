@@ -17,7 +17,6 @@ function loadData(latitude, longitude)
 		{
 			data = JSON.parse(this.responseText).results;
 			updateDataCard(data);
-			console.log(data);
 		}
 		else
 		{
@@ -48,12 +47,14 @@ function convert12Hourto24Hour(timeToConvert)
 	if (timeToConvert.search("AM") != -1)
 	{
 		timeToConvert = timeToConvert.split(" AM")[0];
+		timeList = timeToConvert.split(":");
+		timeToConvert = ((parseInt(timeList[0]) == 12) ? 0 : parseInt(timeList[0])) + `:${timeList[1]}:${timeList[2]}`;
 	}
 	else if (timeToConvert.search("PM") != -1)
 	{
 		timeToConvert = timeToConvert.split(" PM")[0];
 		timeList = timeToConvert.split(":");
-		timeToConvert = ((parseInt(timeList[0]) == 12) ? (0) : (parseInt(timeList[0]) + 12)) + `:${timeList[1]}:${timeList[2]}`;
+		timeToConvert = 12 + ((parseInt(timeList[0]) == 12) ? 0 : parseInt(timeList[0])) + `:${timeList[1]}:${timeList[2]}`;
 	}
 
 	return timeToConvert;
