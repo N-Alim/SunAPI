@@ -13,8 +13,6 @@ Zoom/dézoom avec le scroll et une barre sur le côté (faire attention à fixer
 
 Zoom/dézoom avec le clic bouton du milieu et drag vers le hat/bas (vitesse proportionnelle à la distance du point de base)
 
-Prendre en compte la rotation de la Terre en x/y avec le drag pour la longitude et la latitude
-
 Arranger les textures de la Terre et des nuages (avec canvas et les 2 maps)
 
 Faire une lune qui orbite autour de la Terre
@@ -37,6 +35,7 @@ Faire des liaisons en SSH pour vscode et sublime text
 
 
 Fait:
+Prendre en compte la rotation de la Terre en x/y avec le drag pour la longitude et la latitude
 
 Calculer la longitude et la latitude à partir d'un clic sur la Terre
 

@@ -24,7 +24,7 @@ const earthMaterial = new THREE.MeshPhongMaterial(
 {
 	map: earthMap,
 	bumpMap: earthBump,
-	bumpScale: .05,
+	bumpScale: .5,
 	specularMap: earthSpecular,
 	specular: new THREE.Color(0x444444)
 });
@@ -48,10 +48,10 @@ const cloudMaterial = new THREE.MeshPhongMaterial(
 const cloudMesh = new THREE.Mesh(cloudSphere, cloudMaterial)
 earthMesh.add(cloudMesh)
 
-let earthSpeedRotation = 1 / 8000;
+let earthSpeedRotation = 1 / 6000;
 let earthRotation = false;
 
-let cloudSpeedRotation = 1 / 4000;
+let cloudSpeedRotation = 1 / 3000;
 let cloudRotation = false;
 
 function toggleEarthRotation()
@@ -118,12 +118,12 @@ renderer.domElement.addEventListener("mousemove", (event) =>
 {
 	if (cameraDisplacement)
 	{
-		earthMesh.rotation.y += (event.clientX - xMouse) / 100;
-		const xDiff = (event.clientY - yMouse) / 100;
+		earthMesh.rotation.y += (event.clientX - xMouse) / 200;
+		const xDiff = (event.clientY - yMouse) / 200;
 		if ((earthMesh.rotation.x < Math.PI / 2 && xDiff > 0) || (
 				earthMesh.rotation.x > -Math.PI / 2 && xDiff < 0))
 		{
-			earthMesh.rotation.x += (event.clientY - yMouse) / 100;
+			earthMesh.rotation.x += (event.clientY - yMouse) / 200;
 		}
 		xMouse = event.clientX;
 		yMouse = event.clientY;
