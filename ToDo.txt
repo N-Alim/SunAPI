@@ -29,6 +29,10 @@ Séparer les fichiers js et css proprement
 
 Faire des animations/différences de CSS pour les boutons (toggled, being clicked)
 
+Définir une taille de police pour l'écriture
+
+Faire une vue texte / horloge
+
 ///////////////////////////////
 
 Faire des liaisons en SSH pour vscode et sublime text
