@@ -5,24 +5,27 @@
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Sunset</title>
+		<title>SunAPI</title>
 		<link rel="icon" href="./favicon.ico" />
-		<link rel="stylesheet" href="./assets/css/earth.css">
+		<link rel="stylesheet" href="./assets/css/style.css">
 		<!-- Date de début: 21/01/2022 -->
 		<script type="text/javascript"
 			src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.js"
 			defer>
 		</script>
-		<script src="./assets/js/sunAPI.js" defer></script>
+		<script src="./assets/js/apis.js" defer></script>
 		<script src="./assets/js/earth.js" defer></script>
 		<script src="./assets/js/interactions.js" defer></script>
 	</head>
 
 	<body>
+		<h1>Sun API</h1>
 		<div class="rendering"></div>
 		<div class="details">
 			<div class="info">
-				<div class="dataCard"></div>
+				<h2 class="countryData"></h2>
+				<h3 class="cityData"></h3>
+				<p class="sunData"></p>
 			</div>
 			<div class="buttons">
 				<button onclick="toggleEarthRotation()">Rotate Earth</button>
@@ -30,6 +33,7 @@
 				<button onclick="resetCamera()">Reset Camera</button>
 			</div>
 		</div>
+		<input type="range" id="zoom" name="zoom" min="0" max="1.5" step=".1">
 	</body>
 
 </html>

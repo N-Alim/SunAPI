@@ -1,0 +1,111 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	height: 100vh;
+}
+
+h1 {
+	text-align: center;
+	color: white;
+	background-color: black;
+	height: 6vh;
+	font-size: 2.1em;
+}
+
+.rendering {
+	height: 60vh;
+	width: 100%;
+}
+
+.details {
+	width: 100%;
+	background-color: #000;
+	color: white;
+	padding: 2%;
+	gap: 10px;
+	display: flex;
+	justify-content: space-around;
+	height: 34vh;
+}
+
+.info {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	width: 90%;
+	border-radius: 20px;
+	border: 2px white solid;
+	padding: 1.5% 4%;
+}
+
+h2 {
+	font-size: 1.3em;
+}
+
+h3 {
+	font-size: 1.2em;
+}
+
+p {
+	font-size: 1em;
+}
+
+.buttons {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+button {
+	padding: 4% 0%;
+}
+
+input#zoom {
+	position: fixed;
+	left: 95%;
+	top: 35%;
+	transform: translateX(-50%) rotateZ(-90deg);
+}
+
+@media screen and (min-width:769px) {
+	h1 {
+		font-size: 3em;
+	}
+
+	.info {
+		padding: 1.5% 7%;
+		flex-direction: row;
+	}	
+	
+	.rendering {
+		height: 75vh;
+	}
+	
+	.details {
+		padding: 0.7%;
+		gap: 10px;
+		display: flex;
+		justify-content: space-around;
+		height: 19vh;
+	}
+	
+	.info {
+		padding: 1.5% 7%;
+	}
+	
+	h2 {
+		font-size: 1.8em;
+	}
+
+	h3 {
+		font-size: 1.6em;
+	}
+	
+	p {
+		font-size: 1.3em;
+	}
+}
