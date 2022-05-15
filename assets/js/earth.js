@@ -4,10 +4,14 @@ const geographicCoordinateOrigin = -Math.PI / 2;
 let rendererWitdh = document.querySelector(".rendering").clientWidth;
 let rendererHeight = document.querySelector(".rendering").clientHeight;
 
+const minZoom = 3;
+const maxZoom = 1.5;
+const rangeInput = document.querySelector("input[type=range]#zoom")
+
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, rendererWitdh / rendererHeight,
 	0.1, 1000);
-camera.position.set(0, 0, 2);
+camera.position.set(0, 0, 1.8);
 
 const light = new THREE.DirectionalLight(0xffffff, .75);
 light.position.set(1, 1, 1);
@@ -67,16 +71,23 @@ function toggleCloudsRotation()
 
 renderer.domElement.addEventListener("wheel", function(event)
 {
-	if (camera.position.z > 2 && event.deltaY < 0)
+	if (camera.position.z > maxZoom && event.deltaY < 0)
 	{
-		camera.position.z += -.1;
+		camera.position.z -= .1;
 	}
 
-	else if (event.deltaY > 0)
+	else if (camera.position.z < minZoom && event.deltaY > 0)
 	{
 		camera.position.z += .1;
 	}
+
+	rangeInput.value = 3 - camera.position.z
 });
+
+rangeInput.addEventListener("input", (event) =>
+{
+	camera.position.z = 3 - event.target.value
+})
 
 let xMouse, yMouse;
 
@@ -86,52 +97,82 @@ let tempCloudRotation;
 let initXMouse;
 let initYMouse;
 
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+
 renderer.domElement.addEventListener("mousedown", (event) =>
 {
-	initXMouse = xMouse = event.clientX;
-	initYMouse = yMouse = event.clientY;
-	cameraDisplacement = true;
-	tempEarthRotation = earthRotation;
-	tempCloudRotation = cloudRotation;
-	earthRotation = false;
-	cloudRotation = false;
+	onPointerDown(event);
+})
+
+renderer.domElement.addEventListener("touchstart", (event) =>
+{
+	onPointerDown(event.changedTouches[0]);
 })
 
 let userClick = false
 
 renderer.domElement.addEventListener("mouseup", (event) =>
 {
+	onPointerUp(event);
+})
+
+renderer.domElement.addEventListener("touchend", (event) =>
+{
+	onPointerUp(event.changedTouches[0]);
+})
+
+renderer.domElement.addEventListener("mousemove", (event) =>
+{
+	onPointerMove(event);
+})
+
+renderer.domElement.addEventListener("touchmove", (event) =>
+{
+	onPointerMove(event.changedTouches[0]);
+})
+
+function onPointerDown(screenData)
+{
+	initXMouse = xMouse = screenData.clientX;
+	initYMouse = yMouse = screenData.clientY;
+	cameraDisplacement = true;
+	tempEarthRotation = earthRotation;
+	tempCloudRotation = cloudRotation;
+	earthRotation = false;
+	cloudRotation = false;
+}
+
+function onPointerUp(screenData)
+{
 	cameraDisplacement = false;
-	if (initXMouse - event.clientX == 0 && initYMouse - event.clientY ==
+	if (initXMouse - screenData.clientX == 0 && initYMouse - screenData.clientY ==
 		0)
 	{
 		userClick = true;
 	}
 	earthRotation = tempEarthRotation;
 	cloudRotation = tempCloudRotation;
-})
+}
 
-const raycaster = new THREE.Raycaster();
-const mouse = new THREE.Vector2();
-
-renderer.domElement.addEventListener("mousemove", (event) =>
+function onPointerMove(screenData)
 {
 	if (cameraDisplacement)
 	{
-		earthMesh.rotation.y += (event.clientX - xMouse) / 200;
-		const xDiff = (event.clientY - yMouse) / 200;
+		earthMesh.rotation.y += (screenData.clientX - xMouse) / 200;
+		const xDiff = (screenData.clientY - yMouse) / 200;
 		if ((earthMesh.rotation.x < Math.PI / 2 && xDiff > 0) || (
 				earthMesh.rotation.x > -Math.PI / 2 && xDiff < 0))
 		{
-			earthMesh.rotation.x += (event.clientY - yMouse) / 200;
+			earthMesh.rotation.x += (screenData.clientY - yMouse) / 200;
 		}
-		xMouse = event.clientX;
-		yMouse = event.clientY;
+		xMouse = screenData.clientX;
+		yMouse = screenData.clientY;
 	}
 
-	mouse.x = (event.clientX / rendererWitdh) * 2 - 1;
-	mouse.y = -(event.clientY / rendererHeight) * 2 + 1;
-})
+	mouse.x = (screenData.clientX / rendererWitdh) * 2 - 1;
+	mouse.y = -(screenData.clientY / rendererHeight) * 2 + 1;
+}
 
 function onWindowResize()
 {
@@ -156,17 +197,14 @@ function animate()
 {
 	raycaster.setFromCamera(mouse, camera);
 
-	// calculate objects intersecting the picking ray
 	if (userClick)
 	{
 		const intersects = raycaster.intersectObjects(scene.children, false);
 
 		for (let i = 0; i < intersects.length; i++)
 		{
-			// latitude: ok, longitude: à corriger
-			// console.log(Math.atan2(intersects[i].uv.x, n.z));
 			let latitude = (intersects[i].uv.y - .5)* 180;
-			let longitude = ((intersects[i].uv.x - .5) * 360) //* Math.cos(latitude);
+			let longitude = ((intersects[i].uv.x - .5) * 360)
 			loadData(latitude, longitude);
 		}
 
@@ -186,5 +224,3 @@ function animate()
 	renderer.render(scene, camera);
 }
 animate();
-
-// Bien penser à virer le code qui ne sert à rien et refaire des noms de variables
